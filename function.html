@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Pre-Final</title>
+ <style>
+    body {
+      background-color: whitesmoke;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+      color: black;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: black;
+    }
+
+    input[type="text"] {
+      width: 20%;
+      padding: 8px;
+      border: 1px solid whitesmoke;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+    }
+
+    button {
+      width: 10%;
+      padding: 10px;
+      background-color: lightskyblue;
+      color: white;
+      border: black;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      background-color: wheat;
+      padding: 20px;
+      border-radius: 4px;
+      margin-top: 20px;
+      max-width: 400px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+<body>
+  
+
+ <h2>Pre-Final Examination</h2>
+
+ <label for="numberInput">Input: </label>
+ <input type="text" id="numberInput" />
+ <button onclick="checkNumber()">submit</button>
+
+  <p id="result"></p>
+<body>
+  
+  <script>
+    function checkNumber() {
+      var inputNumber = parseInt(document.getElementById("numberInput").value);
+      var isOdd = inputNumber % 2 !== 0;
+      var isEven = !isOdd;
+      var isPrime = isPrimeNumber(inputNumber);
+
+      var oddNumbers = [];
+      var evenNumbers = [];
+
+      for (var i = 1; i <= inputNumber; i++) {
+        if (i % 2 !== 0) {
+          oddNumbers.push(i);
+        } else {
+          evenNumbers.push(i);
+        }
+      }
+
+      var resultMessage = `Number: ${inputNumber}<br>
+                           Odd Numbers: ${oddNumbers.length > 0 ? oddNumbers.join(', ') : 'No odd numbers'}<br>
+                           Even Numbers: ${evenNumbers.length > 0 ? evenNumbers.join(', ') : 'No even numbers'}<br>
+                           Prime or Not: ${isPrime ? 'it is a prime number' : 'Not a prime number'}`;
+
+      document.getElementById("result").innerHTML = resultMessage;
+    }
+
+    function isPrimeNumber(num) {
+      if (num <= 1) return false;
+      for (var i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          return false;
+        }
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>
